@@ -1,0 +1,288 @@
+body {
+    background-color: black;
+}
+
+#test {
+    width: 40px;
+    height: 40px;
+}
+
+#game-container {
+    display: flex
+}
+
+#gameScreen {
+    position:relative;
+    outline: none;
+    background-color: green;
+    z-index: 0;
+    transition: opacity 1s;
+}
+
+.shaking {
+    animation: shake 0.3s infinite linear;
+}
+
+#chat-window{
+    background-color: aquamarine;
+}
+
+.row {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.tile {
+    position: absolute;
+    z-index: 1;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.player {
+    position: absolute;
+    z-index: 2;
+    will-change: transform;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: all 0.45s;
+}
+
+.p1 {
+    background-image: url(../assets/P_1_hurt.png);
+    --player-walk-img-a: url(../assets/P_1_down_a.png);
+    --player-walk-img-b: url(../assets/P_1_down_b.png);
+    animation: walking 0.7s infinite linear;
+}
+
+.p2 {
+    background-image: url(../assets/P_2_hurt.png);
+    --player-walk-img-a: url(../assets/P_2_down_a.png);
+    --player-walk-img-b: url(../assets/P_2_down_b.png);
+    animation: walking 0.7s infinite linear ;
+}
+
+.p3 {
+    background-image: url(../assets/P_3_hurt.png);
+    --player-walk-img-a: url(../assets/P_3_down_a.png);
+    --player-walk-img-b: url(../assets/P_3_down_b.png);
+    animation: walking 0.7s infinite linear ;
+}
+
+.p4 {
+    background-image: url(../assets/P_4_hurt.png);
+    --player-walk-img-a: url(../assets/P_4_down_a.png);
+    --player-walk-img-b: url(../assets/P_4_down_b.png);
+    animation: walking 0.7s infinite linear ;
+}
+
+.hurt {
+    animation: hurt 0.3s infinite linear, bouncing 0.5s infinite linear;
+}
+
+.Pwr{
+    position: absolute;
+    z-index: 0;
+    background-image: url(../assets/PowerUps_Background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: spinning 0.8s infinite linear;
+}
+
+.M {
+    background-image: url(../assets/M.png);
+    animation: bouncing 0.7s infinite linear;
+}
+
+.R {
+    background-image: url(../assets/R.png);
+    animation: bouncing 0.7s infinite linear;
+}
+
+.L {
+    background-image: url(../assets/L.png);
+    animation: bouncing 0.7s infinite linear;
+}
+
+.F {
+    background-image: url(../assets/L.png);
+    animation: burning 0.3s infinite linear;
+}
+
+.E {
+    animation: bouncing 0.3s infinite linear, exploding 0.1s infinite linear;
+}
+
+.B {
+    background-image: url(../assets/B.png);
+}
+
+.X {
+    background-image: url(../assets/X.png);
+}
+
+.B_broken {
+    background-image: url(../assets/B_broken.png);
+    z-index: 1;
+    opacity: 0;
+    animation: break 0.4s ease-out;
+}
+
+.break {
+    animation: break 1.2s ease-out;
+}
+
+.Loading{
+    background-image: url(../assets/Loading.png);
+    animation: spinning 1s infinite linear;
+}
+
+.infotext {
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
+    font-weight: bolder;
+    white-space: nowrap;
+
+}
+
+.numbers{
+    display: inline-block;
+    -webkit-text-stroke: 1px red;
+    animation: bouncing 0.5s infinite linear;
+}
+
+.blast {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    opacity: 0;
+    animation: blast_expand 1s infinite linear;
+    animation-iteration-count: 1;
+    z-index: 2;
+    --blast-color: rgba(241, 208, 18)
+}
+
+.blast::after{
+    content: '';
+    display: block;
+    position: absolute;
+    top: calc(50%);
+    left: calc(50%);
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: solid 1px #fff0 ;
+    animation: blast_fade 1s infinite linear;
+    animation-iteration-count: 1;
+}
+
+@keyframes walking {
+    0% {background-image: var(--player-walk-img-a);}
+    50%{background-image: var(--player-walk-img-b);}
+    100%{background-image: var(--player-walk-img-a);}
+}
+
+
+@keyframes burning {
+    0% {background-image: url(../assets/F_1.png);}
+    33%{background-image: url(../assets/F_2.png);}
+    70%{background-image: url(../assets/F_3.png);}
+    100%{background-image: url(../assets/F_1.png);}
+}
+
+@keyframes exploding {
+    0% {background-image: url(../assets/E_1.png);}
+    33%{background-image: url(../assets/E_2.png);}
+    66%{background-image: url(../assets/E_3.png);}
+    100%{background-image: url(../assets/E_1.png);}
+}
+
+@keyframes blast_expand {
+    0% {
+        box-shadow:
+        inset 0 0 5px 0 var(--blast-color),
+        0 0  5px 0 var(--blast-color);
+        
+        opacity: 1;
+    }
+    80% {box-shadow:
+        inset 0 0 5px 0 var(--blast-color),
+        0 0  5px 0 var(--blast-color);
+        transform: scale(5, 5);
+        opacity: 0.8;
+    }
+    100% {
+        box-shadow:
+        inset 0 0 5px 0 var(--blast-color),
+        0 0  5px 0 var(--blast-color);
+        transform: scale(6, 6);
+        opacity: 0;
+    }
+}
+
+@keyframes blast_fade {
+    0% {
+        box-shadow:
+        inset 0 0  10px 10px #fff,
+        0 0  100px 150px #fff;
+    }
+    50% {
+        box-shadow:
+        inset 0 0  10px 10px #fff,
+        0 0  50px 0px #fff;
+        opacity: 0.5;
+    }
+    100%{
+        box-shadow: 
+        inset 0 0  10px 10px #fff,
+        0 0  0px 0px #fff;
+        opacity: 0;
+    }
+
+}
+
+
+@keyframes bouncing {
+    0% {transform: scale(1, 1);}
+    25%{transform: scale(1.2, 0.9);}
+    50%{transform: scale(1, 1);}
+    75%{transform: scale(0.9, 1.2);}
+    100%{transform: scale(1, 1);}
+}
+
+@keyframes spinning {
+    0% {transform: rotate(0deg);}
+    50%{transform: rotate(180deg);}
+    100%{transform: rotate(360deg);}
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+
+@keyframes hurt {
+    0%{ filter: brightness(1) invert(0); }
+    45%{ filter: brightness(0) invert(0.8); }
+    50%{ filter: brightness(0) invert(1); }
+    55%{ filter: brightness(0) invert(0.8); }
+    100%{ filter: brightness(1) invert(0); }    
+}
+
+@keyframes break {
+    0% {transform: scale(1, 1);
+        opacity: 1;}
+
+    100%{transform: scale(3, 3);
+        opacity: 0;}
+}
+

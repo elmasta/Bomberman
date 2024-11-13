@@ -1,0 +1,105 @@
+h1 {
+    position: relative;
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-style: italic;
+    z-index: 4;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+.HUDContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.playerInfo {
+    display: flex;
+    flex-direction: column;
+    
+    border: solid 5px white;
+    border-radius: 10px;
+    width: 140px;
+    height: 60px;
+
+    margin-bottom: 10px;
+    transition: opacity 1s;
+    font-size: 20px;
+
+}
+
+.nameHUD{
+    color:white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+    margin-left: 13px;
+    font-size: inherit;
+    -webkit-text-stroke: 1px black;
+
+}
+
+.mainPlayer{
+    order:-1;
+    width: 200px;
+    height: 85px;
+    font-size: 40px;
+
+}
+
+#victoryScreen{
+    position: absolute;
+    width: 680px;
+    top: 80px;
+    left: 0px;
+    display:none;
+    flex-direction: column;
+}
+
+#victoryText {
+    font-size: 40px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    margin: 30px 0 30px 0;
+}
+
+#displaywinner{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    
+}
+
+.life {
+    height: 30px;
+    width: 30px;
+    background-image: url("../assets/Life.png");
+    background-size: cover;
+}
+
+#trophy{
+    font-size: 160px;
+    box-shadow: 0 0 20 10 black;
+    animation: bouncing 3s infinite linear;
+}
+
+#trophy::before{
+background-image: url(../assets/PowerUps_Background.png);
+animation: rotate 0.5s infinite linear;
+}
+
+#winner{
+    height: 200px;
+    width: 200px;
+    background-size: auto;
+    background-repeat: no-repeat;
+}
+
+#FPS-counter {
+    width: 150px;
+}
